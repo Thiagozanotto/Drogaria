@@ -43,7 +43,7 @@
 
             <p:column headerText="Opções">
                 <p:commandButton value="Excluir" actionListener="#{categoriaBean.selecionarExclusao(cursor)}"/>
-                <p:commandButton value="Editar" />
+                <p:commandButton value="Editar"  actionListener="#{categoriaBean.selecionarEdicao(cursor)}" />
             </p:column>
 
         </p:dataTable>

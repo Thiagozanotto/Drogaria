@@ -1,6 +1,7 @@
 insert into categoria (nome) values ("Refrigerantes");
 insert into categoria (nome) values ("Cervejas");
 insert into categoria (nome) values ("Salgadinhos");
+insert into categoria (nome) values ("Carnes");
 
 insert into produto (nome, preco, quantidade, validade, categoria_codigo) values ("Coca Cola Descartável 2 Litros", 12.30, 10, "2023-01-15", 1);
 insert into produto (nome, preco, quantidade, validade, categoria_codigo) values ("Torcida bacon com 250 Gramas", 2.50, 15, "2024-04-30", 3);

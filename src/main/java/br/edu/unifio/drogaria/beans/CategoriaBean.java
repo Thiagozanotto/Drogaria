@@ -54,9 +54,15 @@ public class CategoriaBean {
         categoria = Faces.getFlashAttribute("cursor");
     }
 
-    public void excluir(){
-        categoriaRepository.delete(categoria);
-        Messages.addFlashGlobalInfo("Registro removido com sucesso!");
-        Faces.navigate("categoria-listagem.xhtml?faces-redirect=true");
+    public void excluir() {
+        try {
+            categoriaRepository.delete(categoria);
+            Messages.addFlashGlobalInfo("Registro removido com sucesso!");
+            Faces.navigate("categoria-listagem.xhtml?faces-redirect=true");
+        } catch (DataIntegrityViolationException excecao){
+            excecao.printStackTrace();
+            Messages.addFlashGlobalError("Essa Categoria possui produtos vinculados!");
+        }
     }
+
 }
