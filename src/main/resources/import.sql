@@ -11,4 +11,4 @@ insert into pedido (horario) values ("2022-08-30 19:30:00");
 insert into pedido (horario) values ("2022-08-31 20:43:00");
 insert into pedido (horario) values ("2022-09-05 21:25:00");
 
-insert into item (pedido_codigo, produto_codigo, preco_do_dia, quantidade_do_pedido) values (3, 2, 2, 5.00);
+insert into item (pedido_codigo, produto_codigo, preco, quantidade) values (3, 2, 2, 5.00);

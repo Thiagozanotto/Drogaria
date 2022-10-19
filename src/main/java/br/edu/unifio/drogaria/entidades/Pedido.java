@@ -5,17 +5,18 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity @Data
 public class Pedido {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codigo;
+    private Integer codigo;
 
     @Column(nullable = false)
-    private LocalDateTime horario;
+    private LocalDateTime horario = LocalDateTime.now();
 
-    @OneToMany(mappedBy = "pedido")
-    private List<Item> itens;
+    @OneToMany(mappedBy = "pedido", cascade = {CascadeType.PERSIST})
+    private List<Item> itens = new ArrayList<>();
 }

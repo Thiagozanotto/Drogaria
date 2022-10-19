@@ -14,10 +14,10 @@ public class Item {
     private Long codigo;
 
     @Column(nullable = false)
-    private Byte quantidadeDoPedido;
+    private Byte quantidade = 1;
 
     @Column(nullable = false, precision = 6, scale = 2)
-    private BigDecimal precoDoDia;
+    private BigDecimal preco;
 
     @ManyToOne
     @JoinColumn(nullable = false)

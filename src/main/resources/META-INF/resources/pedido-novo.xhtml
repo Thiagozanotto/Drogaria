@@ -10,19 +10,19 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <f:metadata>
-    <f:viewAction action="#{produtoBean.listar()}" />
+    <f:viewAction action="#{pedidoBean.novo()}" />
 </f:metadata>
 <h:head>
-    <title> Produto </title>
+    <title> Novo Pedido </title>
 </h:head>
 
 <h:body>
     <ui:include src="menu.xhtml"/>
 
-    <h:form>
+    <h:form id="formulario">
         <p:messages id="mensagem" closable="true"/>
 
-        <p:dataTable value="#{produtoBean.produtos}" var="cursor" paginator="true" rows="10">
+        <p:dataTable value="#{pedidoBean.produtos}" var="cursor" paginator="true" rows="5">
             <f:facet name="header">
                 <h:outputText value="Produtos" />
             </f:facet>
@@ -39,10 +39,6 @@
                 <h:outputText value="#{cursor.preco}" />
             </p:column>
 
-            <p:column headerText="Validade" sortBy="#{cursor.validade}">
-                <h:outputText value="#{cursor.validade}" />
-            </p:column>
-
             <p:column headerText="Quantidade" sortBy="#{cursor.quantidade}">
                 <h:outputText value="#{cursor.quantidade}" />
             </p:column>
@@ -52,10 +48,38 @@
             </p:column>
 
             <p:column headerText="Opções">
-                <p:commandButton value="Excluir" actionListener="#{produtoBean.selecionarExclusao(cursor)}"/>
-                <p:commandButton value="Editar"  actionListener="#{produtoBean.selecionarEdicao(cursor)}" />
+                <p:commandButton value="Adicionar" actionListener="#{pedidoBean.adcionar(cursor)}" update=":formulario:carrinho"/>
             </p:column>
         </p:dataTable>
+
+        <p:separator/>
+
+        <p:dataTable id="carrinho" value="#{pedidoBean.carrinho}" var="cursorcarrinho" paginator="true" rows="5">
+            <f:facet name="header">
+                <h:outputText value="Carrinho" />
+            </f:facet>
+
+            <p:column headerText="Código" sortBy="#{cursorcarrinho.codigo}" filterBy="#{cursorcarrinho.codigo}" filterMatchMode="contains">
+                <h:outputText value="#{cursorcarrinho.codigo}" />
+            </p:column>
+
+            <p:column headerText="Nome" sortBy="#{cursorcarrinho.nome}" filterBy="#{cursorcarrinho.nome}" filterMatchMode="contains">
+                <h:outputText value="#{cursorcarrinho.nome}" />
+            </p:column>
+
+            <p:column headerText="Preco" sortBy="#{cursorcarrinho.preco}">
+                <h:outputText value="#{cursorcarrinho.preco}" />
+            </p:column>
+
+        </p:dataTable>
+
+        <p:separator />
+
+        <p:toolbar>
+            <p:toolbarGroup align="right">
+                <p:commandButton value="Salvar" actionListener="#{pedidoBean.salvar()}" />
+            </p:toolbarGroup>
+        </p:toolbar>
     </h:form>
 </h:body>
 

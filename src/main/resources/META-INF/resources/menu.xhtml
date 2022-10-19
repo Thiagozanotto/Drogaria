@@ -16,7 +16,7 @@
 <h:body>
    <h:form>
        <p:menubar>
-
+           <p:menuitem value="Menu" outcome="dashboard.xhtml?faces-redirect=true" />
            <p:submenu label="Categoria">
                <p:menuitem value="Categoria Listagem" outcome="categoria-listagem.xhtml?faces-redirect=true" />
                <p:menuitem value="Cadastrar Categoria" outcome="categoria-novo.xhtml?faces-redirect=true" />
@@ -25,7 +25,9 @@
                <p:menuitem value="Produto Listagem" outcome="produto-listagem.xhtml?faces-redirect=true" />
                <p:menuitem value="Cadastrar Produto" outcome="produto-novo.xhtml?faces-redirect=true" />
            </p:submenu>
-
+           <p:submenu label="Pedido">
+               <p:menuitem value="Novo" outcome="pedido-novo.xhtml?faces-redirect=true" />
+           </p:submenu>
        </p:menubar>
    </h:form>
 </h:body>

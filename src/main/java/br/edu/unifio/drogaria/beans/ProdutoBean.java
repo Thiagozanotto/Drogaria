@@ -46,4 +46,31 @@ public class ProdutoBean {
             Messages.addFlashGlobalError("Registro já existe!");
         }
     }
+
+    public void selecionarExclusao(Produto cursor){
+        Faces.setFlashAttribute("cursor", cursor);
+        Faces.navigate("produto-exclusao.xhtml?faces-redirect=true");
+    }
+    public void selecionarEdicao(Produto cursor){
+        Faces.setFlashAttribute("cursor", cursor);
+        Faces.navigate("produto-edicao.xhtml?faces-redirect=true");
+    }
+
+    public void carregar(){
+        produto = Faces.getFlashAttribute("cursor");
+
+        categorias = categoriaRepository.findAll();
+    }
+
+    public void excluir() {
+        try {
+            produtoRepository.delete(produto);
+            Messages.addFlashGlobalInfo("Registro removido com sucesso!");
+            Faces.navigate("produto-listagem.xhtml?faces-redirect=true");
+        } catch (DataIntegrityViolationException excecao){
+            excecao.printStackTrace();
+            Messages.addFlashGlobalError("Esse Registro possui componentes vinculados!");
+        }
+    }
+
 }
